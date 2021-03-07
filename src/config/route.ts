@@ -1,0 +1,129 @@
+//侧导航
+import 
+{HomeOutlined,UserAddOutlined,ShoppingCartOutlined,DatabaseOutlined,MoneyCollectOutlined,UserSwitchOutlined,LoginOutlined} from  '@ant-design/icons';
+
+const routes=[
+    {
+        path:'/',
+        component:'index.tsx', 
+        menu:{
+            name:'首页',
+            icon:'HomeOutlined',
+        },
+    },
+    {
+        path:'user',
+        // component:'user/index.tsx',
+        menu:{
+            name:"用户管理",
+            icon:'UserAddOutlined',
+        },
+        routes:[
+            {path:'user/list',
+            component:'user/list.tsx',
+            menu:{
+                name:'用户信息',
+                icon:'UserSwitchOutlined'
+            }
+        }
+        ]
+    },
+    {
+        path:'/data',
+        // component:'data/index.tsx',
+        menu:{
+            name:"数据统计",
+            icon:'DatabaseOutlined',
+        },
+        routes:[{ 
+            path:'/data/chart',
+            component:'data/chart.tsx',
+            menu:{
+                name:'数据报表'
+            }
+        }]
+    },
+    {
+        path:'order',
+        // component:'order/index.tsx',
+        menu:{
+            name:"订单管理",
+            icon:'MoneyCollectOutlined',
+        },
+        wrappers:['@/wrappers/auth'],//auth坐权限身份的认证
+        routes:[{ 
+            path:'order/list',
+            component:'order/list.tsx',
+            menu:{
+                name:'订单列表'
+            }
+        }
+        ]
+    },
+    {
+        path:'root',
+        // component:'root/index.tsx',
+        menu:{
+            name:"权限管理",
+            icon:'UserAddOutlined',
+        },
+        routes:[
+            {path:'root/user',
+            component:'root/user.tsx',
+            menu:{
+                name:'角色信息',
+                icon:'UserSwitchOutlined'
+            }
+        },
+        {path:'root/list',
+            component:'root/list.tsx',
+            menu:{
+                name:'权限列表',
+                icon:'UserSwitchOutlined'
+            }
+        },
+        ]
+    },
+    {
+        path:'shop',
+        // component:'shop/index.tsx',
+        menu:{
+            name:"商品管理",
+            icon:'ShoppingCartOutlined',
+        },
+        routes:[{
+            path:'shop/list',
+            component:'shop/list.tsx',
+            menu:{
+                name:'商品列表'
+            }
+        },
+        {
+            path:'shop/cata',
+            component:'shop/cata.tsx',
+            menu:{
+                name:'商品的分类'
+            }
+        },
+        {
+            path:'shop/params',
+            component:'shop/params.tsx',
+            menu:{
+                name:'商品的参数'
+            }
+        },
+    ]
+    },
+    //错误路由
+    {
+        path:'error',
+        component:'Error/error.tsx',
+    },
+    {
+        path:'login',
+        component:'login/index.tsx',
+    }
+  
+];
+
+export  default  routes
